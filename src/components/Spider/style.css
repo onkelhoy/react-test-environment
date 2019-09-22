@@ -1,0 +1,10 @@
+div.spider-container {
+  width: 40%;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+svg.spider {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,182 @@
+$slide-length: 100px;
+$timeout: 300ms;
+$page-timeout: 600ms;
+
+.animation {
+  // initial styles
+  display: none;
+  position: relative;
+  overflow: hidden;
+
+
+  // ############################################
+  // ########### NON COMPLETED ##################
+
+  // ##### SLIDE UP ####### 
+  // enter - on mount [start]
+  &.slide-up-enter {
+    opacity: 0;
+    transform: translateY(-$slide-length);
+  }
+  // on-enter animation [target]
+  &.slide-up-enter.slide-up-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity transform $timeout linear;
+  }
+
+  // exit - on unmount [start]
+  &.slide-up-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  // on-exit - [animation start]
+  &.slide-up-exit.slide-up-exit-active {
+    opacity: 0;
+    transform: translateY(-$slide-length);
+
+    transition: opacity transform $timeout linear;
+  }
+  // after exit - [target]
+  // #### END OF SLIDE UP ##############
+
+
+
+  // ##### SLIDE DOWN ####### 
+  // enter - on mount [start]
+  &.slide-up-enter {
+    opacity: 0;
+    transform: translateY($slide-length);
+  }
+  // on-enter animation [target]
+  &.slide-up-enter.slide-up-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity transform $timeout linear;
+  }
+
+  // exit - on unmount [start]
+  &.slide-up-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  // on-exit - [animation start]
+  &.slide-up-exit.slide-up-exit-active {
+    opacity: 0;
+    transform: translateY($slide-length);
+
+    transition: opacity transform $timeout linear;
+  }
+  // after exit - [target]
+  // #### END OF SLIDE DOWN ##############
+
+
+  // slide down 
+  &.down-enter {
+    opacity: 0;
+    display: block;
+    &>* {
+
+      transform: translateY(50px);
+    }
+  }
+  &.down-enter-active {
+    opacity: 1;
+    &>* {
+
+      transform: translateY(0);
+      transition: transform 300ms ease-in;
+    }
+    transition: opacity 300ms linear;
+  }
+  &.down-enter-done {
+    opacity: 1;
+    display: block;
+  }
+  
+  &.down-exit {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+  &.down-exit.down-exit-active {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+
+    transition: opacity 300ms linear, transform 300ms ease-out;
+  }
+  &.down-exit-done {
+    opacity: 0;
+    display: none;
+  }
+
+  // ###########################################
+  // ########## COMPLETED ###################### 
+
+  // Collapse [toggle true]
+  &.collapse-enter {
+    display: block;
+    opacity: 0;
+    max-height: 0;
+  }
+  &.collapse-enter-active {
+    opacity: 1;
+    max-height: 500px; // increase this if larger is needed
+    transition: opacity $timeout ease-out, max-height $timeout ease-out;
+  }
+  &.collapse-enter-done {
+    display: block;
+  }
+  // on exit [toggle false] 
+  &.collapse-exit {
+    display: block;
+    opacity: 1;
+    max-height: 500px;
+  }
+  &.collapse-exit-active {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity $timeout ease-out, max-height $timeout ease-out;
+  }
+
+  // Fade-In - this is for a whole page load 
+  &.fadeIn-appear {
+    opacity: 0;
+  }
+  &.fadeIn-appear-active {
+    opacity: 1;
+    transition: opacity $page-timeout ease-out;
+  }
+}
+
+.card-flip-container {
+  width: auto;
+  height: 200px;
+  perspective: 1000px;
+
+  .card-flip-inner {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 300ms;
+    transform-style: preserve-3d;
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .back {
+      transform: rotateY(180deg);
+    }
+
+    &.flip {
+      transform: rotateY(180deg);
+    }
+  }
+}

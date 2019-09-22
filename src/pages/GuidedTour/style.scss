@@ -1,0 +1,13 @@
+.visible-container > form {
+  background-color: cornflowerblue;
+  width: 40%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  box-sizing: border-box;
+  padding: 100px 10px;
+  overflow: hidden;
+}

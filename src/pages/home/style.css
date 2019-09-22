@@ -1,0 +1,57 @@
+div.container {
+  position: absolute;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  padding: 15px;
+  box-sizing: border-box;
+
+  grid-template-columns: auto 250px 250px 250px auto;
+  grid-template-rows: 1fr 5fr 1fr 3fr;
+
+  grid-template-areas:  
+    "sl t  t  t  sr"
+    "sl c1 c2 c3 sr"
+    "sl h  h  h  sr"
+    "sl b  b  b  sr";
+  
+  grid-gap: 25px;
+}
+div.card {
+  grid-area: c1;
+
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 15px;
+
+  text-align: center;
+}
+
+div.card >img {
+  width: 80%;
+}
+
+div.card > h3, div.card > p {
+  text-align: center;
+}
+
+div.card > h3 {
+  text-transform: uppercase;
+}
+
+div.card + div.card {
+  grid-area: c2;
+}
+div.card + div.card + div.card {
+  grid-area: c3;
+}
+
+
+div.container > h2 {
+  grid-area: h;
+  text-align: center;
+}

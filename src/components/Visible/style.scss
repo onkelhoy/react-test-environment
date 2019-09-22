@@ -1,0 +1,7 @@
+.visible-container {
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
