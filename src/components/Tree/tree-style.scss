@@ -1,0 +1,17 @@
+$grid-color: #ddd;
+$grid-size: 18px;
+
+svg.modelling-tree {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: #f8f8f8;
+  background-size: $grid-size $grid-size;
+  background-image:
+    linear-gradient(to right, $grid-color 1px, transparent 1px),
+    linear-gradient(to bottom, $grid-color 1px, transparent 1px);
+
+
+}

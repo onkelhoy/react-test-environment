@@ -1,6 +1,3 @@
-$grid-color: #ddd;
-$grid-size: 18px;
-
 .moddeling {
   width: 100vw;
   height: 100vh;
@@ -17,54 +14,14 @@ $grid-size: 18px;
   }
 
   main {
-    background-color: #f8f8f8;
-    background-size: $grid-size $grid-size;
-    background-image:
-      linear-gradient(to right, $grid-color 1px, transparent 1px),
-      linear-gradient(to bottom, $grid-color 1px, transparent 1px);
-  
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
     &.blurred {
       filter: blur(2px);
-    }
-    
-    
-    .node {
-      max-width: 140px;
-      padding: 8px 20px;
-      box-sizing: border-box;
-      background-color: rgb(255, 255, 255);
-      // border: 1px solid $grid-color;
-      // border-radius: 3px;
-      color: black;
-      font-size: 14pt;
-      box-shadow: 0 4px 5px rgb(190, 190, 190);
-      position: relative;
-
-      &.add {
-        &::before {
-          position: absolute;
-          width: 50%;
-          left: 100%;
-          top: 50%;
-          transform: translateY(-50%);
-          height: 3px;
-          background-color: black;
-          content: '';
-        }
-      }
-
-      &+button {
-        transform: translateX(50%);
-        border: none;
-        background-color: cornflowerblue;
-        padding: 8px 10px;
-        color: white;
-        box-shadow: 0 4px 5px rgb(190, 190, 190);
-      }
     }
   }
 }

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { ChessContext } from './util/context';
 
 import Game from './pages/game';
 import Home from './pages/home';
@@ -11,24 +10,23 @@ import GuidedTour from './pages/GuidedTour';
 import Animations from './pages/animations';
 import ModdelingPage from './pages/Moddeling';
 
-const App = props => {
-  const [turn, setTurn] = useState(true); // this should come from server [whos turn it is]
+import en_translations from './translations/en.json';
+import { withLocalize } from 'react-localize-redux';
+
+const App = withLocalize((props) => {
+  props.addTranslation(en_translations);
 
   return (
     <Router>
-      <ChessContext.Provider value={{
-        turn, setTurn
-      }}>
-        <Route path="/" exact component={Home} />
-        <Route path="/game/" component={Game} />
-        <Route path="/animations/" component={Animations} />
-        <Route path="/login/" component={Login} />
-        <Route path="/EditableTable/" component={EditableTablePage} />
-        <Route path="/guide/" component={GuidedTour} />
-        <Route path="/moddeling/" component={ModdelingPage} />
-      </ChessContext.Provider>
+      <Route path="/" exact component={Home} />
+      <Route path="/game/" component={Game} />
+      <Route path="/animations/" component={Animations} />
+      <Route path="/login/" component={Login} />
+      <Route path="/EditableTable/" component={EditableTablePage} />
+      <Route path="/guide/" component={GuidedTour} />
+      <Route path="/moddeling/" component={ModdelingPage} />
     </Router>
   )
-}
+});
 
-ReactDom.render(<App />, document.getElementById('root'))
+ReactDom.render(<App />, document.getElementById('root'));
